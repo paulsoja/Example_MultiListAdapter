@@ -22,13 +22,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         rvList.layoutManager = LinearLayoutManager(this)
+
+        //здесь мы задаем разделитель между айтемами, чтоб они не сливались друг с другом
         val divider = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
         rvList.addItemDecoration(divider)
+
         rvList.adapter = adapter
-        setData()
+        stubData()
     }
 
-    private fun setData() {
+    private fun stubData() {
         val list = mutableListOf<ListMarker>()
         list.add(ItemTitle("title1", 4))
         list.add(ItemGoogle("android", "product1", "17.0v", true))
@@ -39,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         list.add(ItemGoogle("map", "product3", "23.0v", true))
         list.add(ItemApple("car", "England", 2018))
         list.add(ItemTitle("title3", 0))
+        //отправляем все данные в адаптер
         adapter.swapData(list)
     }
 }
